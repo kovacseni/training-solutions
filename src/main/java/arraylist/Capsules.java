@@ -47,7 +47,9 @@ public class Capsules {
         System.out.println(c.getColors());
 
         c.removeLast();
-        System.out.println(c.getColors());
+        System.out.println(c.getColors()
+
+        );
 
 
     }
