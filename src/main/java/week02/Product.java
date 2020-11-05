@@ -19,15 +19,14 @@ public class Product {
     }
 
     public boolean areTheyEqual(Product p) {
-        name.equals(p.name);
-        return true;
+        return name.equals(p.name);
     }
 
     public static void main(String[] args) {
 
         Product p1 = new Product("ruha", "1234");
         Product p2 = new Product("cipő", "12345");
-        Product p3 = new Product("ruha", "1234");
+        Product p3 = new Product("ruha", "12345");
 
         System.out.println(p1.areTheyEqual(p2));
         System.out.println(p1.areTheyEqual(p3));
