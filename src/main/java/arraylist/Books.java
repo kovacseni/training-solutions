@@ -10,9 +10,10 @@ public class Books{
     public void addTitle(String  title) {
         books.add(title);
     }
-     public List<String> getTitles() {
+
+    public List<String> getTitles() {
         return books;
-     }
+    }
 
     public static void main(String[] args) {
 
