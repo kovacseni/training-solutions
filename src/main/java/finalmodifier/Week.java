@@ -12,7 +12,7 @@ public class Week {
 
         System.out.println(HET_NAPJAI.toString());
 
-        HET_NAPJAI.set(1, "más");
+        HET_NAPJAI.set(1, "Szerda");
 
         System.out.println(HET_NAPJAI.toString());
 
