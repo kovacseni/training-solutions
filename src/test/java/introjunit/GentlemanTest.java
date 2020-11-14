@@ -17,4 +17,16 @@ public class GentlemanTest {
         // Then
         assertEquals("Hello John Doe", greeting);
     }
+
+    @Test
+    public void byNullName() {
+        //Given
+        String name = null;
+
+        //When
+        String greeting = new Gentleman().sayHello(name);
+
+        //Then
+        assertEquals("Hello Anonymous", greeting);
+    }
 }
