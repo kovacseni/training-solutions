@@ -1,41 +1,32 @@
 package stringscanner;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class StringScanner {
 
    public boolean isEmpty(String s) {
-        return s == null || s.equals("") || s.isBlank();
+        return s == null || s.equals("");
     }
 
     public int readAndSumValues(String intString, String delimiter) {
-        if (delimiter == null && intString.contains(":")) {
-            throw new IllegalArgumentException("Incorrect parameter string!");
-        } else if (delimiter == null && intString.contains(":")) {
-            delimiter = " ";
-        }
+      Scanner scanner = new Scanner(intString);
+      int sum = 0;
 
-        int i = 0;
-
-       try (Scanner scanner = new Scanner(intString)) {
-           if (intString.isEmpty()) {
-               throw new IllegalArgumentException("Incorrect parameter string!");
-           }
-           if (!intString.contains(delimiter)) {
-               throw new IllegalArgumentException("Incorrect parameter string!");
-           }
-
-        scanner.useDelimiter(delimiter);
-        while (scanner.hasNext()) {
-            i = i + scanner.nextInt();
-        }
-       } catch (InputMismatchException ime ) {
-           throw new IllegalArgumentException("Incorrect parameter string!");
-        }
-       return i;
+     try {
+         if (isEmpty(delimiter)) {
+             while (scanner.hasNext()) {
+                 sum = sum + scanner.nextInt();
+             }
+         } else {
+             while (scanner.hasNext()) {
+                 sum = sum + scanner.useDelimiter(delimiter).nextInt();
+             }
+         }
+     } catch (InputMismatchException imme) {
+         throw new IllegalArgumentException("Incorrect parameter string!");
+     }
+      return sum;
     }
 
     public int readAndSumValues(String intString) {
@@ -43,23 +34,20 @@ public class StringScanner {
     }
 
     public String filterLinesWithWordOccurrences(String text, String word) {
-        if (text.isEmpty() || word.isEmpty()) {
+        if (isEmpty(text) || isEmpty(word) || text.isBlank()) {
             throw new IllegalArgumentException("Incorrect parameter string!");
         }
 
-        List<String> scannerList = new ArrayList<>();
-        try (Scanner scanner = new Scanner(text)) {
+        Scanner scanner = new Scanner(text);
+        String sum = "";
             while (scanner.hasNextLine()) {
                 String s = scanner.nextLine();
                 if (s.contains(word)) {
-                    scannerList.add(s);
+                    sum = sum.concat(s);
+                    sum = sum.concat("\n");
                 }
             }
-        }
-        return scannerList.toString();
+            return sum.trim();
     }
 
 }
-
-
-/* Tudom, hogy nem jó ez a feladat, de teljesen belezavarodtam. Valamint szerintem ellentmondás van a tesztesetek között.*/
