@@ -10,8 +10,8 @@ public class NumberGuesser {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        int r = random.nextInt(100);
-        System.out.println("Gondoltam egy számra. Találja ki a számot!");
+        int r = random.nextInt(100) + 1;
+        System.out.println("Gondoltam egy számra 1 és 100 között. Találja ki a számot!");
         int a = scanner.nextInt();
 
         while (a != r) {
