@@ -41,13 +41,3 @@ public class DayInMonth {
     return numberOfDays;
     }
 }
-
-
- /* if (year % 4 == 1 || year % 4 == 2 || year % 4 == 3) {
-         numberOfDays = 28;
-         } else if (year % 4 == 0 && year % 400 == 0) {
-         numberOfDays = 29;
-         } else {
-         numberOfDays = 29;
-         }
-         break; */
