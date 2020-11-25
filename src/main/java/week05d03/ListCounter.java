@@ -1,6 +1,5 @@
 package week05d03;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListCounter {
