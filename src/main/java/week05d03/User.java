@@ -1,4 +1,4 @@
-package week05.d03;
+package week05d03;
 
 public class User {
 
