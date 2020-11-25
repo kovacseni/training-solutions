@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListCounter {
-    List<String> list = new ArrayList<>();
+    private List<String> list;
 
     public int count(List<String> list) {
         int i = 0;
