@@ -10,12 +10,12 @@ import java.util.List;
 public class ProductSeniorTest {
 
     private List<ProductSenior> productList;
-    private Store store;
+    private StoreSenior store;
 
     @BeforeEach
     public void setUp() {
         productList = new ArrayList<>();
-        store = new Store(productList);
+        store = new StoreSenior(productList);
         productList.add(new ProductSenior("kenyér", Category.BAKEDGOODS, 325));
         productList.add(new ProductSenior("tej", Category.DAIRY, 250));
         productList.add(new ProductSenior("csirkemell", Category.FROZEN, 1500));
