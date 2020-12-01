@@ -21,7 +21,7 @@ public class PlaylistTest {
          Song song2 = new Song("Fear Of The Dark", 442, "Iron Maiden");
          Song song3 = new Song("Origin", 228, "Korubaan");
          Song song4 = new Song("November Rain", 537, "Guns'n Roses");
-         Song song5 = new Song("Summertime City", 254, "Therion");
+         Song song5 = new Song("Summer Night City", 254, "Therion");
 
          songList.add(song1);
          songList.add(song2);
@@ -32,7 +32,7 @@ public class PlaylistTest {
 
      @Test
     public void playlistToStringTest() {
-         Assertions.assertEquals("Zeneszám adatai: Metallica: Enter Sandman, hossza: 329 sec; Zeneszám adatai: Iron Maiden: Fear Of The Dark, hossza: 442 sec; Zeneszám adatai: Korubaan: Origin, hossza: 228 sec; Zeneszám adatai: Guns'n Roses: November Rain, hossza: 537 sec; Zeneszám adatai: Therion: Summertime City, hossza: 254 sec; ", playlist.toString(songList));
+         Assertions.assertEquals("Zeneszám adatai: Metallica: Enter Sandman, hossza: 329 sec; Zeneszám adatai: Iron Maiden: Fear Of The Dark, hossza: 442 sec; Zeneszám adatai: Korubaan: Origin, hossza: 228 sec; Zeneszám adatai: Guns'n Roses: November Rain, hossza: 537 sec; Zeneszám adatai: Therion: Summer Night City, hossza: 254 sec; ", playlist.toString(songList));
      }
 
      @Test
