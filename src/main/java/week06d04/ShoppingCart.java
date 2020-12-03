@@ -4,9 +4,9 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    private List<Item> shoppingList;
+    private List<ItemSenior> shoppingList;
 
-    public ShoppingCart(List<Item> shoppingList) {
+    public ShoppingCart(List<ItemSenior> shoppingList) {
         this.shoppingList = shoppingList;
     }
 
@@ -22,14 +22,14 @@ public class ShoppingCart {
        }
 
        if (isOnTheList == false) {
-           Item item = new Item(name, quantity);
+           ItemSenior item = new ItemSenior(name, quantity);
            shoppingList.add(item);
        }
     }
 
     public int getItem(String name) {
         int quantity = 0;
-        for (Item i : shoppingList) {
+        for (ItemSenior i : shoppingList) {
             if (i.getName().equals(name)) {
                 quantity = i.getQuantity();
             }

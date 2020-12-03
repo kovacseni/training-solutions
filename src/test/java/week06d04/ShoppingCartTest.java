@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ShoppingCartTest {
 
-    private List<Item> shoppingList;
+    private List<ItemSenior> shoppingList;
     private ShoppingCart cart;
 
     @BeforeEach
@@ -18,11 +18,11 @@ public class ShoppingCartTest {
         shoppingList = new ArrayList<>();
         cart = new ShoppingCart(shoppingList);
 
-        Item item1 = new Item("kenyér", 1);
-        Item item2 = new Item("tej", 2);
-        Item item3 = new Item("joghurt", 3);
-        Item item4 = new Item("zsömle", 4);
-        Item item5 = new Item("tojás", 5);
+        ItemSenior item1 = new ItemSenior("kenyér", 1);
+        ItemSenior item2 = new ItemSenior("tej", 2);
+        ItemSenior item3 = new ItemSenior("joghurt", 3);
+        ItemSenior item4 = new ItemSenior("zsömle", 4);
+        ItemSenior item5 = new ItemSenior("tojás", 5);
 
         shoppingList.add(item1);
         shoppingList.add(item2);
