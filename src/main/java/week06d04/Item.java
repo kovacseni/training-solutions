@@ -2,23 +2,28 @@ package week06d04;
 
 public class Item {
 
+    private int price;
+    private int month;
     private String name;
-    private int quantity;
 
-    public Item(String name, int quantity) {
+    public Item(int price, int month, String name) {
+        if (price == 0 || month == 0 || name.isEmpty() || name.isBlank()) {
+            throw new IllegalArgumentException("Minden paramétert adjon meg helyesen!");
+        }
+        this.price = price;
+        this.month = month;
         this.name = name;
-        this.quantity = quantity;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getMonth() {
+        return month;
     }
 
     public String getName() {
         return name;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }
