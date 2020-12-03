@@ -7,7 +7,7 @@ public class Item {
     private String name;
 
     public Item(int price, int month, String name) {
-        if (price == 0 || month == 0 || name.isEmpty() || name.isBlank()) {
+        if (price <= 0 || month <= 0 || month > 12 || name == null || name.isEmpty() || name.isBlank()) {
             throw new IllegalArgumentException("Minden paramétert adjon meg helyesen!");
         }
         this.price = price;

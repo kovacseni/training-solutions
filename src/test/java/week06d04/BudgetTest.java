@@ -14,6 +14,7 @@ public class BudgetTest {
 
     @BeforeEach
     public void setUp() {
+        itemList = new ArrayList<>();
         budget = new Budget(itemList);
 
         Item item1 = new Item(12500, 2, "gázszámla");
@@ -30,7 +31,17 @@ public class BudgetTest {
     }
 
     @Test
-    public void testBudget() {
-        Assertions.assertEquals(19000, budget.getItemsByMonth(2));
+    public void testBudget1() {
+        Assertions.assertEquals(3, budget.getItemsByMonth(2).size());
+    }
+
+    @Test
+    public void testBudget2() {
+        Assertions.assertEquals("vízszámla", budget.getItemsByMonth(2).get(1).getName());
+    }
+
+    @Test
+    public void testBudget3() {
+        Assertions.assertEquals(12500, budget.getItemsByMonth(2).get(0).getPrice());
     }
 }
