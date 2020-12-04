@@ -99,3 +99,16 @@ public class SimpleDate {
         return sb.toString();
     }
 }
+
+/* javap SimpleDate.class parancsra a következőt irta ki:
+
+Compiled from "SimpleDate.java"
+public class defaultconstructor.date.SimpleDate {
+  public defaultconstructor.date.SimpleDate();
+  public void setDate(int, int, int);
+  public int getYear();
+  public int getMonth();
+  public int getDay();
+}
+
+ */
