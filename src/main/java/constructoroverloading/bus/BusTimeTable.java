@@ -35,4 +35,14 @@ public class BusTimeTable {
         }
         return next;
     }
+
+    public SimpleTime firstBus() {
+        SimpleTime first = timeTable.get(0);
+        for (int i = 0; i < timeTable.size(); i++) {
+            if (timeTable.get(i).difference(first) < 0) {
+                first = timeTable.get(i);
+            }
+        }
+        return first;
+    }
 }
