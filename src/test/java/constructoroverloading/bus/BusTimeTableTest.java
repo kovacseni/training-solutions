@@ -13,8 +13,10 @@ public class BusTimeTableTest {
     private static final List<SimpleTime> TIME_TABLE = Arrays.asList(
             new SimpleTime(9, 15),
             new SimpleTime(12, 45),
+            new SimpleTime(8, 33),
             new SimpleTime(14, 15),
             new SimpleTime(16, 15),
+            new SimpleTime(7, 42),
             new SimpleTime(18, 15)
     );
 
@@ -23,7 +25,7 @@ public class BusTimeTableTest {
         //Given
         BusTimeTable timetable = new BusTimeTable(TIME_TABLE);
         // When
-        assertEquals(5, timetable.getTimeTable().size());
+        assertEquals(7, timetable.getTimeTable().size());
         assertEquals(9, timetable.getTimeTable().get(0).getHours());
         assertEquals(15, timetable.getTimeTable().get(4).getMinutes());
     }
@@ -59,6 +61,6 @@ public class BusTimeTableTest {
 
     @Test
     public void testFirstBus() {
-        assertEquals("9:15", new BusTimeTable(TIME_TABLE).firstBus().toString());
+        assertEquals("7:42", new BusTimeTable(TIME_TABLE).firstBus().toString());
     }
 }
