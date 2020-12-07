@@ -1,7 +1,5 @@
 package week07d01;
 
-import java.util.Scanner;
-
 public class MathAlgorithms {
 
     public boolean isPrime(int x) {
