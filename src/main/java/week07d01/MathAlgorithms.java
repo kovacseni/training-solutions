@@ -24,16 +24,4 @@ public class MathAlgorithms {
         }
         return prime;
     }
-
-    public static void main(String[] args) {
-        MathAlgorithms m = new MathAlgorithms();
-        System.out.println(m.isPrime(4));
-        System.out.println(m.isPrime(2));
-        System.out.println(m.isPrime(3));
-        System.out.println(m.isPrime(6));
-        System.out.println(m.isPrime(5));
-        System.out.println(m.isPrime(49));
-        System.out.println(m.isPrime(23));
-        System.out.println(m.isPrime(2019));
-    }
 }
