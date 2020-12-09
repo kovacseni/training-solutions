@@ -39,4 +39,5 @@ public class Date {
     public int getDay() {
         return DAY;
     }
+
 }

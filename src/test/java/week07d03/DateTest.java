@@ -47,4 +47,16 @@ public class DateTest {
         Assertions.assertEquals(12, date5.getMonth());
         Assertions.assertEquals(29, date5.getDay());
     }
+
+    @Test
+    public void createWithAll() {
+        Date date6 = new Date(1972, 12, 30);
+        date6 = Date.of(1982, 10, 29);
+        date6 = date6.withYear(1992);
+        date6 = date6.withMonth(11);
+        date6 = date6.withDay(28);
+        Assertions.assertEquals(1992, date6.getYear());
+        Assertions.assertEquals(11, date6.getMonth());
+        Assertions.assertEquals(28, date6.getDay());
+    }
 }
