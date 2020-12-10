@@ -1,12 +1,12 @@
 package week07d04;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Lab {
 
     private String title;
     private boolean completed;
-    private LocalDateTime completedAt;
+    private LocalDate completedAt;
 
     public Lab(String title) {
         this.title = title;
@@ -14,20 +14,32 @@ public class Lab {
         this.completedAt = null;
     }
 
-    public Lab(String title, LocalDateTime completedAt) {
+    public Lab(String title, LocalDate completedAt) {
         this.title = title;
         this.completed = true;
         this.completedAt = completedAt;
     }
 
-    public void complete(LocalDateTime dateAndTime) {
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean getCompleted() {
+        return completed;
+    }
+
+    public LocalDate getCompletedAt() {
+        return completedAt;
+    }
+
+    public void complete(LocalDate date) {
         completed = true;
-        completedAt = dateAndTime;
+        completedAt = date;
     }
 
     public void complete() {
         completed = true;
-        completedAt = LocalDateTime.now();
+        completedAt = LocalDate.now();
     }
 
     @Override
