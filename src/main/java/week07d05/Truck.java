@@ -9,4 +9,14 @@ public class Truck extends Vehicle {
         this.numberOfGears = super.getNumberOfGears();
         this.transmissionType = TransmissionType.MANUAL;
     }
+
+    @Override
+    public int getNumberOfGears() {
+        return numberOfGears;
+    }
+
+    @Override
+    public TransmissionType getTransmissionType() {
+        return transmissionType;
+    }
 }

@@ -9,4 +9,14 @@ public class Car extends Vehicle {
         this.numberOfGears = super.getNumberOfGears();
         this.transmissionType = TransmissionType.AUTOMATIC;
     }
+
+    @Override
+    public int getNumberOfGears() {
+        return numberOfGears;
+    }
+
+    @Override
+    public TransmissionType getTransmissionType() {
+        return transmissionType;
+    }
 }

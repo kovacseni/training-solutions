@@ -7,6 +7,16 @@ public class Motorcycle extends Vehicle {
 
     public Motorcycle() {
         this.numberOfGears = super.getNumberOfGears();
-            this.transmissionType = TransmissionType.SEQUENTIAL;
+        this.transmissionType = TransmissionType.SEQUENTIAL;
         }
+
+    @Override
+    public int getNumberOfGears() {
+        return numberOfGears;
     }
+
+    @Override
+    public TransmissionType getTransmissionType() {
+        return transmissionType;
+    }
+}
