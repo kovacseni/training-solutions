@@ -1,6 +1,6 @@
 package week05d02;
 
-public class changeLetter {
+public class ChangeLetter {
 
     public String changeVowels(String str) {
 

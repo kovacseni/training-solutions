@@ -1,13 +1,13 @@
-package week04;
+package week04d02;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Search {
 
     public static void main(String[] args) {
 
-        Main m = new Main();
+        Search m = new Search();
         System.out.println(m.getIndexesOfChar("ketchup", 'e'));
         System.out.println(m.getIndexesOfChar("kefe", 'e'));
         System.out.println(m.getIndexesOfChar("fekete kefe", 'e'));

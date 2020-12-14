@@ -1,8 +1,7 @@
-package week04;
+package week04d01;
 
 import org.junit.jupiter.api.Test;
-import stringbuilder.NameBuilder;
-import stringbuilder.Title;
+import week04d01.NameChanger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

@@ -1,6 +1,8 @@
-package week03;
+package week03d05;
 
 import org.junit.jupiter.api.Test;
+import week03d05.Operation;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OperationTest {
