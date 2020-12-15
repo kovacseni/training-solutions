@@ -1,0 +1,4 @@
+Nepal 31 3 2
+Csad 13 3 6
+Magyarorszag 10 3 6
+Németország 427 3 4
