@@ -1,0 +1,5 @@
+﻿kenyér;2;300
+tej;2;250
+kolbász;1;650
+sütemény;5;280
+vaj;2;290
