@@ -16,4 +16,13 @@ public class StringListsTest {
 
         Assertions.assertEquals(result, new StringLists().stringListsUnion(first, second));
     }
+
+    @Test
+    public void testUnio2() {
+        List<String> first = Arrays.asList("alfa", "béta", "gamma");
+        List<String> second = Arrays.asList("Alfa", "béta", "gamma", "Delta");
+        List<String> result = Arrays.asList("alfa", "béta", "gamma", "Alfa", "Delta");
+
+        Assertions.assertEquals(result, new StringLists().stringListsUnion(first, second));
+    }
 }
