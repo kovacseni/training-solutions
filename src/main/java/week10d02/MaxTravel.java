@@ -1,6 +1,5 @@
 package week10d02;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class  MaxTravel {
