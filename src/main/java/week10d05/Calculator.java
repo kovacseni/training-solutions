@@ -16,7 +16,7 @@ public class Calculator {
             }
         } else {
            Arrays.sort(arr);
-            minSum = arr[0] + arr[1] + arr[2] + arr[3];
+           minSum = arr[0] + arr[1] + arr[2] + arr[3];
         }
         return minSum;
     }
