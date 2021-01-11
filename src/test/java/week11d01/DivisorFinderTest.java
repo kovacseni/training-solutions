@@ -16,5 +16,8 @@ public class DivisorFinderTest {
         Assertions.assertEquals(0, new DivisorFinder2().findDivisors(29));
         Assertions.assertEquals(2, new DivisorFinder2().findDivisors(15));
         Assertions.assertEquals(2, new DivisorFinder2().findDivisors(-4255));
+
+        Assertions.assertEquals(2, new DivisorFinder().findDivisors(420));
+        Assertions.assertEquals(2, new DivisorFinder2().findDivisors(420));
     }
 }

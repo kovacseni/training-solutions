@@ -9,7 +9,7 @@ public class DivisorFinder2 {
         char[] xy = number.toCharArray();
         for (int i = 0; i < xy.length; i++) {
             int x = Character.getNumericValue(xy[i]);
-            if (n % x == 0) {
+            if (x > 0 && n % x == 0) {
                 sum++;
             }
         }
