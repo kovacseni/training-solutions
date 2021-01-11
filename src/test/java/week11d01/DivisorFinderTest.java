@@ -9,7 +9,12 @@ public class DivisorFinderTest {
     public void testDivisorFinder() {
         Assertions.assertEquals(1, new DivisorFinder().findDivisors(425));
         Assertions.assertEquals(0, new DivisorFinder().findDivisors(29));
-        Assertions.assertEquals(2, new DivisorFinder().findDivisors(15));
+        Assertions.assertEquals(2, new DivisorFinder().findDivisors(-15));
         Assertions.assertEquals(2, new DivisorFinder().findDivisors(4255));
+
+        Assertions.assertEquals(1, new DivisorFinder2().findDivisors(425));
+        Assertions.assertEquals(0, new DivisorFinder2().findDivisors(29));
+        Assertions.assertEquals(2, new DivisorFinder2().findDivisors(15));
+        Assertions.assertEquals(2, new DivisorFinder2().findDivisors(-4255));
     }
 }
