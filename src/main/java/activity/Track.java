@@ -16,7 +16,6 @@ public class Track {
     }
 
     public Coordinate findMinimumCoordinate() {
-        Coordinate minCoordinate = null;
         double minLatitude = trackPoints.get(0).getCoordinate().getLatitude();
         double minLongitude = trackPoints.get(0).getCoordinate().getLongitude();
         for (TrackPoint t : trackPoints) {
@@ -27,7 +26,7 @@ public class Track {
                 minLongitude = t.getCoordinate().getLongitude();
             }
         }
-        minCoordinate = new Coordinate(minLatitude, minLongitude);
+        Coordinate minCoordinate = new Coordinate(minLatitude, minLongitude);
         return minCoordinate;
     }
 

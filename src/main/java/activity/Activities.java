@@ -18,7 +18,7 @@ public class Activities {
     public int numberOfTrackActivities() {
         int trackActivities = 0;
         for (Activity a : activities) {
-            if (a.getClass() == ActivityWithTrack.class) {
+            if (a instanceof ActivityWithTrack) {
                 trackActivities++;
             }
         }
@@ -37,51 +37,19 @@ public class Activities {
 
     public List<Report> distancesByTypes() {
         List<Report> reportList = new ArrayList<>();
-        reportList.add(new Report(ActivityType.BIKING, getBikingDistance()));
-        reportList.add(new Report(ActivityType.HIKING, getHikingDistance()));
-        reportList.add(new Report(ActivityType.RUNNING, getRunningDistance()));
-        reportList.add(new Report(ActivityType.BASKETBALL, getBasketballDistance()));
-
+        for (ActivityType a : ActivityType.values()) {
+            reportList.add(new Report(a, getDistanceByType(a)));
+        }
         return reportList;
     }
 
-    private double getBikingDistance() {
-        double bikingDistance = 0;
+    private double getDistanceByType(ActivityType activityType) {
+        double distanceByType = 0;
         for (Activity a : activities) {
-            if (a.getType() == ActivityType.BIKING) {
-                bikingDistance += a.getDistance();
+            if (a.getType() == activityType) {
+                distanceByType += a.getDistance();
             }
         }
-        return bikingDistance;
-    }
-
-    private double getHikingDistance() {
-        double hikingDistance = 0;
-        for (Activity a : activities) {
-            if (a.getType() == ActivityType.HIKING) {
-                hikingDistance += a.getDistance();
-            }
-        }
-        return hikingDistance;
-    }
-
-    private double getRunningDistance() {
-        double runningDistance = 0;
-        for (Activity a : activities) {
-            if (a.getType() == ActivityType.RUNNING) {
-                runningDistance += a.getDistance();
-            }
-        }
-        return runningDistance;
-    }
-
-    private double getBasketballDistance() {
-        double basketballDistance = 0;
-        for (Activity a : activities) {
-            if (a.getType() == ActivityType.BASKETBALL) {
-                basketballDistance += a.getDistance();
-            }
-        }
-        return basketballDistance;
+        return distanceByType;
     }
 }
