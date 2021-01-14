@@ -31,7 +31,6 @@ public class Track {
     }
 
     public Coordinate findMaximumCoordinate() {
-        Coordinate maxCoordinate = null;
         double maxLatitude = trackPoints.get(0).getCoordinate().getLatitude();
         double maxLongitude = trackPoints.get(0).getCoordinate().getLongitude();
         for (TrackPoint t : trackPoints) {
@@ -42,7 +41,7 @@ public class Track {
                 maxLongitude = t.getCoordinate().getLongitude();
             }
         }
-        maxCoordinate = new Coordinate(maxLatitude, maxLongitude);
+        Coordinate maxCoordinate = new Coordinate(maxLatitude, maxLongitude);
         return maxCoordinate;
     }
 
