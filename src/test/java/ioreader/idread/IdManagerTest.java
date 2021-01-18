@@ -13,7 +13,7 @@ public class IdManagerTest {
     public void getIdsTest() {
         assertEquals(0, idManager.getIds().size());
         idManager.getIds().add("test");
-        assertEquals(1, idManager.getIds().size());
+        assertEquals(0, idManager.getIds().size());
 
 
     }

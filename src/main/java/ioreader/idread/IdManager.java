@@ -12,7 +12,7 @@ public class IdManager {
     private List<String> ids = new ArrayList<>();
 
     public List<String> getIds() {
-        return ids;
+        return new ArrayList<>(ids);
     }
 
     public void readIdsFromFile(String fileName) {
