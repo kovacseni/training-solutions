@@ -17,7 +17,7 @@ public class IdManager {
 
     public void readIdsFromFile(String fileName) {
         Path path = Path.of("src/main/resources/" + fileName);
-        try (BufferedReader br = Files.newBufferedReader(path);) {
+        try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             while ((line= br.readLine()) != null) {
                 ids.add(line);
