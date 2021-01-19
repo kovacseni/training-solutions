@@ -16,9 +16,8 @@ public class StateRegister {
     }
 
     public void readStatesFromFile(String stringFileName) {
-        try {
-            Path path = Path.of("src/main/resources/" + stringFileName);
-            BufferedReader br = Files.newBufferedReader(path);
+        Path path = Path.of("src/main/resources/" + stringFileName);
+        try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] splittedLine = line.split("-");
