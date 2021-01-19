@@ -16,9 +16,8 @@ public class SchoolRecordsManager {
     }
 
     public void readGradesFromFile(String filename) {
-        try {
-            Path path = Path.of("src/main/resources/" + filename);
-            BufferedReader br = Files.newBufferedReader(path);
+        Path path = Path.of("src/main/resources/" + filename);
+        try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] studentData = line.split(" ");
