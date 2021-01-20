@@ -5,18 +5,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MatrixReader {
 
-    private List<byte[]> myMatrix;
+    private List<byte[]> myMatrix = new ArrayList<>();
 
     public List<byte[]> getMyMatrix() {
         return myMatrix;
     }
 
     public void readBytesAndCreateMatrix(String filename) {
-        Path path = Path.of(filename);
+        Path path = Path.of("src/test/resources/" + filename);
         try(InputStream is = new BufferedInputStream(Files.newInputStream(path))) {
             byte[] bytes = new byte[1000];
             int size;
