@@ -8,12 +8,12 @@ import java.nio.file.Path;
 public class ByteChecker {
 
     public int readBytesAndFindAs(String filename) {
-        Path path = Path.of(filename);
+        Path path = Path.of("src/test/resources/" + filename);
         int sumA = 0;
             try (InputStream is = Files.newInputStream(path)) {
                 byte[] characters = is.readAllBytes();
                 for (byte b : characters) {
-                    if (Byte.toString(b).toLowerCase().equals("a")) {
+                    if (b == 97) {
                         sumA++;
                     }
                 }
