@@ -11,6 +11,6 @@ public class ByteCheckerTest {
     @Test
     public void readBytesAndFindAsTest() {
 
-        assertEquals(129, byteChecker.readBytesAndFindAs("data.dat"));
+        assertEquals(116, byteChecker.readBytesAndFindAs("data.dat"));
     }
 }
