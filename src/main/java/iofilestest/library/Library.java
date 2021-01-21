@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Library {
@@ -48,7 +47,6 @@ public class Library {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             while ((line = br.readLine()) != null) {
-
                 String[] splittedLine = line.split(": ");
                 add(new Book(splittedLine[0], splittedLine[1]));
             }

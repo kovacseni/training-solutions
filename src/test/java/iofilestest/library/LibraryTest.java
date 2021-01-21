@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryTest {
@@ -29,11 +28,11 @@ public class LibraryTest {
     public void testSaveBooks() {
         Path path = new File(folder, "registry.txt").toPath();
         library.saveBooks(path);
-        List<String> testRegistry = new ArrayList<>();
+        List<String> testRegistry;
         try {
             testRegistry = Files.readAllLines(path);
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read.", ioe);
+            throw new IllegalStateException("Test failed.", ioe);
         }
 
         Assertions.assertEquals(3, testRegistry.size());
@@ -65,5 +64,11 @@ public class LibraryTest {
 
         Assertions.assertEquals("Valentyin Petrovics Katajev", library.getRegistry().get(5).getAuthor());
         Assertions.assertEquals("Távolban egy fehér vitorla", library.getRegistry().get(5).getTitle());
+    }
+
+    @Test
+    public void testException() {
+        Exception ex = Assertions.assertThrows(IllegalStateException.class, () -> library.loadBooks(Path.of("xyz.txt")));
+        Assertions.assertEquals("Can't load text.", ex.getMessage());
     }
 }
