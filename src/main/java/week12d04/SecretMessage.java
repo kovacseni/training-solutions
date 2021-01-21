@@ -9,13 +9,14 @@ public class SecretMessage {
     public void readSecretMessage(String file) {
         Path path = Path.of(file);
         try (InputStream is = new BufferedInputStream(Files.newInputStream(path))) {
-            byte[] bytes = new byte[10000];
-            int size = is.read(bytes);
-            for (int i = 0; i < size; i++) {
-                int x = bytes[i];
-                x += 10;
-                char ch = (char)x;
-                System.out.print(ch);
+            byte[] bytes = new byte[10];
+            int size;
+            while ((size = is.read(bytes)) > 0) {
+                for (int i = 0; i < size; i++) {
+                    int x = (int)bytes[i] + 10;
+                    char ch = (char) x;
+                    System.out.print(ch);
+                }
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file.", ioe);
