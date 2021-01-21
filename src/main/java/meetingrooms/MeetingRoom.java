@@ -1,4 +1,4 @@
-package week02.projektmunka;
+package meetingrooms;
 
 public class MeetingRoom {
 
