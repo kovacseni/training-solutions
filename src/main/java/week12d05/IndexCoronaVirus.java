@@ -12,7 +12,7 @@ public class IndexCoronaVirus {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.indexOf("koronavírus") >= 0 || line.indexOf("Koronavírus") >= 0) {
+                if (line.toLowerCase().contains("koronavírus")) {
                     sumCoronaVirus++;
                 }
             }
