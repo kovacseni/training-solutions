@@ -11,6 +11,7 @@ public class Towns {
         try (BufferedReader br = Files.newBufferedReader(path)) {
             int max = 0;
             String longestName = "";
+            br.readLine(); //átugorjuk a headert
             String line;
             while ((line = br.readLine()) != null) {
                 int index1 = line.indexOf(";");
