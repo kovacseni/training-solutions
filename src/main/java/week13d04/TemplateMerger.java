@@ -28,7 +28,7 @@ public class TemplateMerger {
             sb.replace(nameIndexes[0], nameIndexes[1], e.getName());
             int[] yearIndexes = getIndexesOfStringsToReplace(sb);
             sb.replace(yearIndexes[0], yearIndexes[1], Integer.toString(e.getYearOfBirth()));
-            result.append(sb.toString()). append("\n");
+            result.append(sb.toString()).append("\n");
             sb.delete(0, sb.toString().length()).append(helpString);
         }
         return result;
