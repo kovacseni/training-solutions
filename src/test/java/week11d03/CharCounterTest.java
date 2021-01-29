@@ -11,4 +11,11 @@ public class CharCounterTest {
 
         Assertions.assertEquals(2, new CharCounter().countChars(chars));
     }
+
+    @Test
+    public void testCharCounter2() {
+        String[] chars = new String[] {"abc", "cba", "ab", "jklbzau", "jrlaghub"};
+
+        Assertions.assertEquals(2, new CharCounter2().countChars(chars));
+    }
 }
