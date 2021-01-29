@@ -1,6 +1,11 @@
 package activity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Track {
@@ -77,4 +82,44 @@ public class Track {
         double rectangleArea = (findMaximumCoordinate().getLatitude() - findMinimumCoordinate().getLatitude()) * (findMaximumCoordinate().getLongitude() - findMinimumCoordinate().getLongitude());
         return rectangleArea;
     }
-}
+
+    public void loadFromGpx() {
+        Path path = Path.of("src/test/resources/track.gpx");
+        try (BufferedReader br = Files.newBufferedReader(path)) {
+            Coordinate[] helpArray = new Coordinate[1];
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.contains("<trkpt")) {
+                    Coordinate coordinate = getNewCoordinate(line);
+                    helpArray[0] = coordinate;
+                }
+                if (line.contains("<ele")) {
+                    addNewTrackPointToList(line, helpArray[0]);
+                }
+            }
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file.", ioe);
+        }
+    }
+
+        private Coordinate getNewCoordinate(String line) {
+
+            int index1 = line.indexOf("lat=");
+            String lat = line.substring(index1 + 5, index1 + 15);
+            double latitude = Double.parseDouble(lat);
+            int index2 = line.indexOf("lon=");
+            String lon = line.substring(index2 + 5, index2 + 15);
+            double longitude = Double.parseDouble(lon);
+
+            return new Coordinate(latitude, longitude);
+        }
+
+        private void addNewTrackPointToList(String line, Coordinate coordinate) {
+            int index3 = line.indexOf("<ele>");
+            String ele = line.substring(index3 + 5, index3 + 10);
+            Double elevation = Double.parseDouble(ele);
+
+            trackPoints.add(new TrackPoint(coordinate, elevation));
+        }
+    }
+
