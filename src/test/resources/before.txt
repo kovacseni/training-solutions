@@ -1,0 +1,5 @@
+Metallica;1981
+Omega;1962
+The Beatles;1957
+Edda;1974
+Michael Jackson;1966

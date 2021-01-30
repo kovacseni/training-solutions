@@ -42,6 +42,3 @@ public class BandManager {
         b.writeBandsBefore(Path.of("src/test/resources/before.txt"), 1990);
     }
 }
-
-// A teszteset valamiért nem fut le, de mivel main-ben tesztelve jól
-//működik a metódus, ezért elküldöm.
