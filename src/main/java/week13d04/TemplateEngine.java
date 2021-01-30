@@ -66,9 +66,9 @@ public class TemplateEngine {
         TemplateEngine t = new TemplateEngine();
         Path path1 = Path.of("src/main/resources/letter.txt");
         Path path2 = Path.of("src/main/resources/kedvesugyfel.txt");
-        try {
-            BufferedReader br = Files.newBufferedReader(path1);
-            BufferedWriter bw = Files.newBufferedWriter(path2);
+        try (BufferedReader br = Files.newBufferedReader(path1);
+             BufferedWriter bw = Files.newBufferedWriter(path2))
+        {
             Map<String, Object> map = new HashMap<>();
             map.put("{nev}", "Kovács József");
             map.put("{datum}", LocalDate.of(2021, 1, 23));
@@ -77,7 +77,7 @@ public class TemplateEngine {
 
             t.merge(br, map, bw);
         } catch (IOException ioe) {
-            throw new IllegalStateException("xyz", ioe);
+            throw new IllegalStateException("Error while merging template.", ioe);
         }
     }
 }
