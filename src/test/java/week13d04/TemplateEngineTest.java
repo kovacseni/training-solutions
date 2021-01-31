@@ -22,7 +22,7 @@ public class TemplateEngineTest {
 
     @Test
     public void TemplateEngineTest() {
-        TemplateEngine t = new TemplateEngine();
+        TemplateEngine template = new TemplateEngine();
         Path path1 = Path.of("src/main/resources/letter.txt");
         Path path2 = new File(folder, "kedvesugyfel.txt").toPath();
         try (BufferedReader br = Files.newBufferedReader(path1);
@@ -34,17 +34,22 @@ public class TemplateEngineTest {
             map.put("{osszeg}", 18753);
             map.put("{hatarido}", LocalDate.of(2021, 2, 15));
 
-            t.merge(br, map, bw);
+            template.merge(br, map, bw);
 
+
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Error while merging template.", ioe);
+        }
+
+        try {
             List<String> letter = Files.readAllLines(path2);
 
             Assertions.assertEquals("Kedves Kovács József!", letter.get(0));
             Assertions.assertEquals("Megküldjük önnek a következő esedékes számláját 2021-01-23 dátummal,", letter.get(2));
             Assertions.assertEquals("melynek összege: 18753 Ft!", letter.get(3));
             Assertions.assertEquals("A fizetési határidő 2021-02-15.", letter.get(4));
-
         } catch (IOException ioe) {
-            throw new IllegalStateException("Error while merging template.", ioe);
+            throw new IllegalStateException("Can not read file.", ioe);
         }
     }
 }
