@@ -36,20 +36,17 @@ public class TemplateEngineTest {
 
             template.merge(br, map, bw);
 
+            bw.flush();
 
-        } catch (IOException ioe) {
-            throw new IllegalStateException("Error while merging template.", ioe);
-        }
-
-        try {
             List<String> letter = Files.readAllLines(path2);
 
             Assertions.assertEquals("Kedves Kovács József!", letter.get(0));
             Assertions.assertEquals("Megküldjük önnek a következő esedékes számláját 2021-01-23 dátummal,", letter.get(2));
             Assertions.assertEquals("melynek összege: 18753 Ft!", letter.get(3));
             Assertions.assertEquals("A fizetési határidő 2021-02-15.", letter.get(4));
+
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read file.", ioe);
+            throw new IllegalStateException("Error while merging template.", ioe);
         }
     }
 }
