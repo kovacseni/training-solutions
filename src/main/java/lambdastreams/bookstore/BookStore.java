@@ -3,7 +3,6 @@ package lambdastreams.bookstore;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class BookStore {
