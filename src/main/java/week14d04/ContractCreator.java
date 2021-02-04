@@ -1,5 +1,6 @@
 package week14d04;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContractCreator {
@@ -11,6 +12,6 @@ public class ContractCreator {
     }
 
     public Contract create(String name) {
-        return new Contract(name, template.getMonthlyPrices());
+        return new Contract(name, new ArrayList<>(template.getMonthlyPrices()));
     }
 }
