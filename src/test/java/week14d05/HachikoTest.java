@@ -11,14 +11,14 @@ import java.util.Map;
 public class HachikoTest {
 
     @Test
-    public void testCountWords() {
+    public void testCountWords() throws IOException {
         try (FileReader fr = new FileReader("src/main/resources/hachiko.srt", Charset.forName("windows-1250"))) {
-                Map<String, Integer> wordsSum = new Hachiko().countWords(fr, "Hachiko", "haza", "pályaudvar", "jó");
+            Map<String, Integer> wordsSum = new Hachiko().countWords(fr, "Hachiko", "haza", "pályaudvar", "jó");
 
-            Assertions.assertEquals("{haza=15, Hachiko=4, jó=15, pályaudvar=5}", wordsSum.toString());
-
-        } catch (IOException ioe) {
-            throw new IllegalStateException("Can not read file.", ioe);
+            Assertions.assertEquals(16, wordsSum.get("haza"));
+            Assertions.assertEquals(4, wordsSum.get("Hachiko"));
+            Assertions.assertEquals(38, wordsSum.get("jó"));
+            Assertions.assertEquals(6, wordsSum.get("pályaudvar"));
         }
     }
 }

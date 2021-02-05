@@ -23,7 +23,7 @@ public class Hachiko {
 
     private int[] count(String line, int[] sums, String... words) {
         for (int i = 0; i < words.length; i++) {
-            if (line.contains(words[i])) {
+            if (line.toLowerCase().contains(words[i].toLowerCase())) {
                 sums[i] += 1;
             }
         }
