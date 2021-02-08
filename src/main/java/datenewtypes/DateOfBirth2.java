@@ -36,10 +36,7 @@ public class DateOfBirth2 {
     }
 
     public boolean wasItALeapYear() {
-        if (birthday.isLeapYear()) {
-            return true;
-        }
-        return false;
+        return birthday.isLeapYear();
     }
 
     public String findBirthDayOfWeekLater(int year) {
