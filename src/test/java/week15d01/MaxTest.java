@@ -11,13 +11,13 @@ public class MaxTest {
     @Test
     public void testMax() {
         Map<Integer, Integer> coordinates = new HashMap<>();
-        coordinates.put(2, 3);
-        coordinates.put(3, 4);
-        coordinates.put(1, 2);
-        coordinates.put(8, 9);
-        coordinates.put(4, 5);
-        int[] expected = new int[] {8, 9};
+        coordinates.put(2, -3);
+        coordinates.put(3, -4);
+        coordinates.put(1, -2);
+        coordinates.put(8, -9);
+        coordinates.put(4, -5);
 
-        Assertions.assertArrayEquals(expected, new Max(coordinates).getMax());
+        Assertions.assertEquals(1, new Max().getMax(coordinates).getKey());
+        Assertions.assertEquals(-2, new Max().getMax(coordinates).getValue());
     }
 }

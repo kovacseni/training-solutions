@@ -5,25 +5,27 @@ import java.util.Map;
 
 public class Max {
 
-    private Map<Integer, Integer> coordinates;
+    public Map.Entry<Integer, Integer> getMax(Map<Integer, Integer> coordinates) {
+        int x = getX(coordinates);
+        Map.Entry<Integer, Integer> result = null;
 
-    public Max(Map<Integer, Integer> coordinates) {
-        this.coordinates = coordinates;
+        for (Map.Entry<Integer, Integer> m : coordinates.entrySet()) {
+            if (m.getKey() == x) {
+                result = m;
+            }
+        }
+        return result;
     }
 
-    public Map<Integer, Integer> getCoordinates() {
-        return new HashMap<>(coordinates);
-    }
-
-    public int[] getMax() {
-        int x = 0;
-        int y = 0;
+    private int getX(Map<Integer, Integer> coordinates) {
+        int x = Integer.MIN_VALUE;
+        int y = Integer.MIN_VALUE;
         for (Integer i : coordinates.keySet()) {
             if (coordinates.get(i) > y) {
                 x = i;
                 y = coordinates.get(i);
             }
         }
-        return new int[] {x, y};
+        return x;
     }
 }
