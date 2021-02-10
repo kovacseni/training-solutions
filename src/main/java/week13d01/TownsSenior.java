@@ -44,10 +44,3 @@ public class TownsSenior {
         return twoTowns.get(0);
     }
 }
-
-
-    /*
-    Mai Senior feladat:
-A GitHubon a `examples\week13d01\src\main\resources\iranyitoszamok-varosok-2021.csv` fájl tartalmazza a magyar városok listáját.
-Add vissza az ábécésorrendben első város nevét és irányítószámát!
-     */
