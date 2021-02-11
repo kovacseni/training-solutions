@@ -12,7 +12,7 @@ public class CoronaData {
         try (BufferedReader br = new BufferedReader(reader)) {
             String line;
             while ((line = br.readLine()) != null) {
-                cases = getList(line);
+                getList(line, cases);
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Can not read file.", ioe);
@@ -25,14 +25,14 @@ public class CoronaData {
         return hungarysThreeLargest;
     }
 
-    private List<Data> getList(String line) {
-        List<Data> hungarysCases = new ArrayList<>();
+    private List<Data> getList(String line, List<Data> hungarysCases) {
         if (line.contains("Hungary")) {
             String[] temp = line.split(",");
             String yearAndWeek = temp[1];
             int cases = Integer.parseInt(temp[2]);
             hungarysCases.add(new Data(yearAndWeek, cases));
         }
+        Collections.sort(hungarysCases);
         Collections.reverse(hungarysCases);
         return hungarysCases;
     }
