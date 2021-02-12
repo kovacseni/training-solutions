@@ -1,8 +1,6 @@
 package week15d05;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,8 +33,9 @@ public class GameOfThrones {
     private void putToMap(String s, Map<String, Integer> familysInBattles) {
         if (!s.isEmpty() && !familysInBattles.containsKey(s)) {
             familysInBattles.put(s, 0);
+        } else if (!s.isEmpty()) {
+            familysInBattles.put(s, familysInBattles.get(s) + 1);
         }
-        familysInBattles.put(s, familysInBattles.get(s) + 1);
     }
 
     private String getFamily(Map<String, Integer> familysInBattles) {
@@ -49,5 +48,12 @@ public class GameOfThrones {
             }
         }
         return family;
+    }
+
+    public static void main(String[] args) {
+        GameOfThrones g = new GameOfThrones();
+        InputStream is = GameOfThrones.class.getResourceAsStream("/battles.csv");
+        InputStreamReader isr = new InputStreamReader(is);
+        System.out.println(g.getFamilyWithMostBattles(isr));
     }
 }
