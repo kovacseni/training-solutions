@@ -14,9 +14,7 @@ public class GameOfThrones {
             String line = br.readLine();
             while((line = br.readLine()) != null) {
                 List<String> familys = getFamilys(line);
-                for (String s : familys) {
-                    putToMap(s, familysInBattles);
-                }
+                putToMap(familys, familysInBattles);
             }
             String familyWithMostBattles = getFamily(familysInBattles);
             return familyWithMostBattles;
@@ -31,11 +29,13 @@ public class GameOfThrones {
         return familys;
     }
 
-    private void putToMap(String s, Map<String, Integer> familysInBattles) {
-        if (!s.isEmpty() && !familysInBattles.containsKey(s)) {
-            familysInBattles.put(s, 0);
-        } else if (!s.isEmpty()) {
-            familysInBattles.put(s, familysInBattles.get(s) + 1);
+    private void putToMap(List<String> familys, Map<String, Integer> familysInBattles) {
+        for (String s : familys) {
+            if (!s.isEmpty() && !familysInBattles.containsKey(s)) {
+                familysInBattles.put(s, 0);
+            } else if (!s.isEmpty()) {
+                familysInBattles.put(s, familysInBattles.get(s) + 1);
+            }
         }
     }
 
