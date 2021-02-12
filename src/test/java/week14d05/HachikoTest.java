@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.util.Map;
 
 public class HachikoTest {
@@ -29,7 +30,17 @@ public class HachikoTest {
         try (InputStream is = HachikoTest.class.getResourceAsStream("/hachiko.srt")) {
             InputStreamReader isr = new InputStreamReader(is, Charset.forName("windows-1250"));
             Map<String, Integer> wordsSum = new Hachiko().countWords(isr, "Hachiko", "haza", "pályaudvar", "jó");
-            System.out.println(wordsSum.toString());
+
+            Assertions.assertEquals(16, wordsSum.get("haza"));
+            Assertions.assertEquals(4, wordsSum.get("Hachiko"));
+            Assertions.assertEquals(38, wordsSum.get("jó"));
+            Assertions.assertEquals(6, wordsSum.get("pályaudvar"));
         }
+    }
+
+    @Test
+    public void testCountWithStreams() {
+        Path path = Path.of("src/main/resources/hachiko.srt");
+        Assertions.assertEquals(4, new HachikoSenior().getAllOccurencesOfWord(path, "Hachiko"));
     }
 }
