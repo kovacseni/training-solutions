@@ -1,8 +1,9 @@
 package week15d05;
 
 import java.io.*;
-import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameOfThrones {
@@ -10,9 +11,9 @@ public class GameOfThrones {
     public String getFamilyWithMostBattles(Reader reader) {
         Map <String, Integer> familysInBattles = new HashMap<>();
         try (BufferedReader br = new BufferedReader(reader)) {
-            String line;
+            String line = br.readLine();
             while((line = br.readLine()) != null) {
-                String[] familys = getFamilys(line);
+                List<String> familys = getFamilys(line);
                 for (String s : familys) {
                     putToMap(s, familysInBattles);
                 }
@@ -24,9 +25,9 @@ public class GameOfThrones {
         }
     }
 
-    private String[] getFamilys(String line) {
+    private List<String> getFamilys(String line) {
         String[] temp = line.split(",");
-        String[] familys = new String[] {temp[5], temp[6], temp[7], temp[8], temp[9], temp[10], temp[11], temp[12]};
+        List<String> familys = Arrays.asList(temp[5], temp[6], temp[7], temp[8], temp[9], temp[10], temp[11], temp[12]);
         return familys;
     }
 
@@ -48,12 +49,5 @@ public class GameOfThrones {
             }
         }
         return family;
-    }
-
-    public static void main(String[] args) {
-        GameOfThrones g = new GameOfThrones();
-        InputStream is = GameOfThrones.class.getResourceAsStream("/battles.csv");
-        InputStreamReader isr = new InputStreamReader(is);
-        System.out.println(g.getFamilyWithMostBattles(isr));
     }
 }
