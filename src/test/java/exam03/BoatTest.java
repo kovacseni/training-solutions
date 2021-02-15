@@ -1,4 +1,4 @@
-/*package exam03;
+package exam03;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,4 +12,4 @@ public class BoatTest {
         assertEquals("WetDreams", boat.getName());
         assertEquals(15, boat.getMaxPassengers());
     }
-}*/
+}
