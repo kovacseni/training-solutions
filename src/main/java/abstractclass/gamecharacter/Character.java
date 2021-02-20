@@ -1,7 +1,5 @@
 package abstractclass.gamecharacter;
 
-import week03.Position;
-
 import java.util.Random;
 
 public abstract class Character {
