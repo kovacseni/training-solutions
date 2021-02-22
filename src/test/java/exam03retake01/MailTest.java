@@ -1,4 +1,4 @@
-/*package exam03retake01;
+package exam03retake01;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,4 +21,4 @@ public class MailTest {
         assertEquals("Doe Family", mail.getSubject());
         assertEquals("Hi All!", mail.getMessage());
     }
-}*/
+}
