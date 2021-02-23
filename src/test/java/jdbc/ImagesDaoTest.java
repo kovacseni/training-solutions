@@ -24,7 +24,7 @@ public class ImagesDaoTest {
 
         dao = new ImagesDao(dataSource);
 
-        Flyway fw = Flyway.configure().dataSource(dataSource).load();
+        Flyway fw = Flyway.configure().locations("/db/migration/images").dataSource(dataSource).load();
         fw.clean();
         fw.migrate();
     }

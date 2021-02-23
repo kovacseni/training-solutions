@@ -22,7 +22,7 @@ public class MetaDataDaoTest {
 
         dao = new MetaDataDao(dataSource);
 
-        Flyway fw = Flyway.configure().dataSource(dataSource).load();
+        Flyway fw = Flyway.configure().locations("/db/migration/employees2").dataSource(dataSource).load();
         fw.clean();
         fw.migrate();
     }
