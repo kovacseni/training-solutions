@@ -108,7 +108,7 @@ public class ActivityDaoTest {
         Activity activity = new Activity(LocalDateTime.of(2020, 12, 14, 15, 30), "laza délutáni futás", ActivityType.RUNNING, trackpoints);
 
         Exception ex1 = Assertions.assertThrows(IllegalArgumentException.class, () -> dao.saveActivityAndSaveTrackPoints(activity));
-        Assertions.assertEquals("Invalid activity or trackpoint(s).", ex1.getMessage());
+        Assertions.assertEquals("Transaction not succeeded!", ex1.getMessage());
 
         Exception ex2 = Assertions.assertThrows(IllegalArgumentException.class, () -> dao.findActivityWithTrackPointsById(6));
         Assertions.assertEquals("No activity with this id.", ex2.getMessage());
