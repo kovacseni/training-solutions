@@ -30,7 +30,7 @@ public class ImagesDao {
     }
 
     private void fillBlob(InputStream is, Blob blob) throws SQLException {
-        try (OutputStream os = blob.setBinaryStream((1))) {
+        try (OutputStream os = blob.setBinaryStream(1)) {
             is.transferTo(os);
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot write blob.", ioe);

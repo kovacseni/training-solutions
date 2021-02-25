@@ -1,4 +1,7 @@
-package activitytracker;
+package week17d03;
+
+import activitytracker.Activity;
+import activitytracker.ActivityType;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
