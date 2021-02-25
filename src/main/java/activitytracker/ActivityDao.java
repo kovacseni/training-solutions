@@ -106,59 +106,6 @@ public class ActivityDao {
         }
     }
 
-    /*public void saveActivityAndSaveTrackPoints(Activity activity) {
-        try (Connection conn = dataSource.getConnection()) {
-            conn.setAutoCommit(false);
-
-            boolean activityIsSaved = false;
-            int activityId = saveActivitywithTrackPoints(activity, conn);
-            if (activityId > 0) {
-                activityIsSaved = true;
-            }
-            boolean trackPointsAreAllSaved = saveTrackPoints(activityId, activity, conn);
-
-            if (activityIsSaved && trackPointsAreAllSaved) {
-                conn.commit();
-            } else {
-                conn.rollback();
-                throw new IllegalArgumentException("Invalid activity or trackpoint(s).");
-            }
-
-        } catch (SQLException sqle) {
-            throw new IllegalStateException("Cannot save activity and/or trackpoints.", sqle);
-        }
-    }
-
-    private int saveActivitywithTrackPoints(Activity activity, Connection conn) throws SQLException {
-        int activityId = 0;
-        try (PreparedStatement stmt = conn.prepareStatement("insert into activities(start_time, activity_desc, activity_type) values (?, ?, ?);", Statement.RETURN_GENERATED_KEYS)) {
-            setStmt(activity, stmt);
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                activityId = rs.getInt(1);
-            }
-        }
-        return activityId;
-    }
-
-    private boolean saveTrackPoints(int activityId, Activity activity, Connection conn) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement("insert into track_point(id, tp_time, lat, lon) values (?, ?, ?, ?);")) {
-            for (TrackPoint t : activity.getTrackpoints()) {
-                if (t.getLat() < -90.0 || t.getLat() > 90.0 || t.getLon() < -180 || t.getLon() > 180.0) {
-                    return false;
-                }
-                stmt.setInt(1, activityId);
-                stmt.setDate(2, Date.valueOf(t.getTime()));
-                stmt.setDouble(3, t.getLat());
-                stmt.setDouble(4, t.getLon());
-
-                stmt.executeUpdate();
-            }
-        }
-        return true;
-    }*/
-
     public void saveActivityAndSaveTrackPoints(Activity activity) {
         try (Connection conn = dataSource.getConnection()) {
             conn.setAutoCommit(false);
