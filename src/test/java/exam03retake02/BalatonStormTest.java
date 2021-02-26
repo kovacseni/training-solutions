@@ -1,4 +1,4 @@
-/*package exam03retake02;
+package exam03retake02;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,4 +17,4 @@ public class BalatonStormTest {
             assertEquals(List.of("Ábrahámhegy", "Balatonfüred", "Balatonszárszó"), new BalatonStorm().getStationsInStorm(reader));
         }
     }
-}*/
+}
