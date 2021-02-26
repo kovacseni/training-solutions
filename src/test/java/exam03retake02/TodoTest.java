@@ -1,4 +1,4 @@
-/*package exam03retake02;
+package exam03retake02;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,4 +27,4 @@ public class TodoTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Todo("Invalid", 6));
     }
-}*/
+}
