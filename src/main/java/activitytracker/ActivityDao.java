@@ -110,13 +110,19 @@ public class ActivityDao {
         try (Connection conn = dataSource.getConnection()) {
             conn.setAutoCommit(false);
 
-            int activityId = saveActivitywithTrackPoints(activity, conn);
-            saveTrackPoints(activityId, activity, conn);
+            try {
+                int activityId = saveActivitywithTrackPoints(activity, conn);
+                saveTrackPoints(activityId, activity, conn);
 
-            conn.commit();
+                conn.commit();
 
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Transaction not succeeded!");
+            } catch (Exception ex) {
+                conn.rollback();
+                throw new IllegalArgumentException("Transaction not succeeded!");
+            }
+
+        } catch (SQLException sqle) {
+            throw new IllegalStateException("Wrong connection.", sqle);
         }
     }
 
@@ -132,9 +138,6 @@ public class ActivityDao {
                 activityId = rs.getInt(1);
             }
             return activityId;
-        } catch (Exception ex) {
-            conn.rollback();
-            throw new IllegalArgumentException("Invalid activity!");
         }
     }
 
@@ -151,9 +154,6 @@ public class ActivityDao {
 
                 stmt.executeUpdate();
             }
-        } catch (Exception ex) {
-            conn.rollback();
-            throw new IllegalArgumentException("Invalid trackpoint(s)!");
         }
     }
 
