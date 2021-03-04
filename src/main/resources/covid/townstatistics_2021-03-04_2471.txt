@@ -1,0 +1,4 @@
+Oltási statisztika 2471, Baracska településre:
+0_beoltatlan=20 fő
+1 alkalommal beoltott=1 fő
+2 alkalommal beoltott=0 fő
