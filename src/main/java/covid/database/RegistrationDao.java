@@ -5,7 +5,6 @@ import covid.service.VaccineType;
 import covid.service.Person;
 import org.mariadb.jdbc.MariaDbDataSource;
 
-import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,20 +13,21 @@ import java.util.PriorityQueue;
 
 public class RegistrationDao {
 
-    private DataSource getDataSource() {
+    private MariaDbDataSource dataSource;
+
+    public RegistrationDao() {
         try {
-            MariaDbDataSource dataSource = new MariaDbDataSource();
+            this.dataSource = new MariaDbDataSource();
             dataSource.setUrl("jdbc:mariadb://localhost:3306/covid?useUnicode=true");
             dataSource.setUser("coviduser");
             dataSource.setPassword("covidpassword");
-            return dataSource;
         } catch (SQLException sqle) {
             throw new IllegalStateException("Can not connect to database.", sqle);
         }
     }
 
     public String getTown(String postalCode) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("select telepules, telepulesresz from postal_codes where irsz = ?")) {
             stmt.setString(1, postalCode);
             return getTownName(stmt);
@@ -49,7 +49,7 @@ public class RegistrationDao {
     }
 
     public boolean checkIfThisPersonIsRegistratedBefore(String ssn) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("select * from citizens where taj = ?;")) {
             stmt.setString(1, ssn);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -59,7 +59,7 @@ public class RegistrationDao {
     }
 
     public void writeIntoDatabase(Person person) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("insert into citizens(citizen_name, zip, age, email, taj, number_of_vaccination, last_vaccination) values (?, ?, ?, ?, ?, ?, ?);")) {
             stmt.setString(1, person.getName());
             stmt.setString(2, person.getPostalCode());
@@ -74,7 +74,7 @@ public class RegistrationDao {
     }
 
     public void updateName(String ssn, String name) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("update citizens set citizen_name = ? where taj = ?;")) {
             stmt.setString(1, name);
             stmt.setString(2, ssn);
@@ -83,7 +83,7 @@ public class RegistrationDao {
     }
 
     public void updatePostalCode(String ssn, String postalCode) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("update citizens set zip = ? where taj = ?;")) {
             stmt.setString(1, postalCode);
             stmt.setString(2, ssn);
@@ -92,7 +92,7 @@ public class RegistrationDao {
     }
 
     public void updateAge(String ssn, int age) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("update citizens set age = ? where taj = ?;")) {
             stmt.setInt(1, age);
             stmt.setString(2, ssn);
@@ -101,7 +101,7 @@ public class RegistrationDao {
     }
 
     public void updateEmail(String ssn, String email) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("update citizens set email = ? where taj = ?;")) {
             stmt.setString(1, email);
             stmt.setString(2, ssn);
@@ -110,7 +110,7 @@ public class RegistrationDao {
     }
 
     public void deleteRegistration(String ssn) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("delete from citizens where taj = ?;")) {
             stmt.setString(1, ssn);
             stmt.executeUpdate();
@@ -118,7 +118,7 @@ public class RegistrationDao {
     }
 
     public PriorityQueue<Person> getVaccinationList(String postalCode) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM citizens WHERE zip = ? ORDER BY age DESC, citizen_name ASC;")) {
             stmt.setString(1, postalCode);
             return getList(stmt);
@@ -137,7 +137,7 @@ public class RegistrationDao {
     }
 
     public Person getPersonWithThisSsn(String ssn) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("select * from citizens where taj = ?;")) {
             stmt.setString(1, ssn);
             return executeGetPerson(stmt);
@@ -173,7 +173,7 @@ public class RegistrationDao {
     }
 
     public void registrateVaccinationIntoDatabase(String ssn, VaccinationState numberOfVaccinesGot, LocalDate date, VaccineType vaccineType) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         PreparedStatement stmt = conn.prepareStatement("UPDATE citizens SET number_of_vaccination = ?, last_vaccination = ?, vaccine_type = ? WHERE taj = ?;")) {
             stmt.setInt(1, numberOfVaccinesGot.getValue());
             stmt.setDate(2, Date.valueOf(date));
@@ -189,7 +189,7 @@ public class RegistrationDao {
     private void registrateVaccination(String ssn, VaccinationState numberOfVaccinesGot, LocalDate date, VaccineType vaccineType) throws SQLException {
         long id = getId(ssn);
 
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         PreparedStatement stmt = conn.prepareStatement("insert into vaccinations(citizen_id, taj, vaccination_date, number_of_vaccination, vaccine_type) values (?, ?, ?, ?, ?);")) {
             stmt.setLong(1, id);
             stmt.setString(2, ssn);
@@ -202,7 +202,7 @@ public class RegistrationDao {
     }
 
     private long getId(String ssn) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("select citizen_id from citizens where taj = ?;")) {
             stmt.setString(1, ssn);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -215,7 +215,7 @@ public class RegistrationDao {
     }
 
     public void registrateFail(String ssn, String comments, String reason, LocalDate date) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         PreparedStatement stmt = conn.prepareStatement("update citizens set comments = ? where taj = ?;")) {
             stmt.setString(1, comments);
             stmt.setString(2, ssn);
@@ -227,7 +227,7 @@ public class RegistrationDao {
 
     private void registrateFailIntoVaccinations(String ssn, String reason, LocalDate date) throws SQLException {
         long id = getId(ssn);
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         PreparedStatement stmt = conn.prepareStatement("insert into vaccinations(citizen_id, taj, vaccination_date, comments) values (?, ?, ?, ?);")) {
             stmt.setLong(1, id);
             stmt.setString(2, ssn);
@@ -239,7 +239,7 @@ public class RegistrationDao {
     }
 
     public String getCommentsBefore(String ssn) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         PreparedStatement stmt = conn.prepareStatement("select comments from citizens where taj = ?;")) {
             stmt.setString(1, ssn);
             return getComments(stmt);
@@ -256,7 +256,7 @@ public class RegistrationDao {
     }
 
     public List<Integer> getTownData(String postalCode) throws SQLException {
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         PreparedStatement stmt = conn.prepareStatement("select number_of_vaccination from citizens where zip = ?;")) {
             stmt.setString(1, postalCode);
             return townData(stmt);
@@ -275,7 +275,7 @@ public class RegistrationDao {
 
     public List<String> getPostalCodes() throws SQLException {
         List<String> postalCodes = new ArrayList<>();
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = dataSource.getConnection();
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("select * from postal_codes;")) {
             while (rs.next()) {

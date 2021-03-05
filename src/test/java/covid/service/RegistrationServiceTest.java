@@ -31,14 +31,6 @@ public class RegistrationServiceTest {
         Flyway fw = Flyway.configure().locations("/db/migration/covid").dataSource(dataSource).load();
         fw.clean();
         fw.migrate();
-
-        Install install = new Install();
-        install.getPostalCodes(dataSource);
-        install.getCitizens(dataSource);
-        install.updateCitizens(dataSource);
-        install.updateCitizensComments(dataSource);
-        install.insertIntoVaccinations(dataSource);
-        install.insertIntoVaccinationsComments(dataSource);
     }
 
     @Test
@@ -100,7 +92,7 @@ public class RegistrationServiceTest {
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("select * from vaccinations where taj = 988356050")) {
             rs.next();
-            Assertions.assertEquals(14, rs.getLong("vaccination_id"));
+            Assertions.assertEquals(9, rs.getLong("vaccination_id"));
             Assertions.assertEquals("Az oltás meghiúsult. Indok: terhesség", rs.getString("comments"));
             rs.next();
             Assertions.assertEquals(21, rs.getLong("vaccination_id"));

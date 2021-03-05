@@ -1,6 +1,5 @@
 package covid.database;
 
-import covid.service.Install;
 import covid.service.VaccinationState;
 import covid.service.VaccineType;
 import covid.service.Person;
@@ -35,14 +34,6 @@ public class RegistrationDaoTest {
         Flyway fw = Flyway.configure().locations("/db/migration/covid").dataSource(dataSource).load();
         fw.clean();
         fw.migrate();
-
-        Install install = new Install();
-        install.getPostalCodes(dataSource);
-        install.getCitizens(dataSource);
-        install.updateCitizens(dataSource);
-        install.updateCitizensComments(dataSource);
-        install.insertIntoVaccinations(dataSource);
-        install.insertIntoVaccinationsComments(dataSource);
     }
 
     @Test
