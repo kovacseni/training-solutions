@@ -28,4 +28,14 @@ public class Question {
     public List<String> getAnswers() {
         return answers;
     }
+
+    @Override
+    public String toString() {
+        return id +
+                ". " + question + "\n" +
+                answers.get(0) + "\n" +
+                answers.get(1) + "\n" +
+                answers.get(2) + "\n" +
+                answers.get(3);
+    }
 }
