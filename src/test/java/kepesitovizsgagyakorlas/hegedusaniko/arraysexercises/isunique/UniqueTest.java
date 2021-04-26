@@ -1,4 +1,4 @@
-package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.isunique;/*package isunique;
+package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.isunique;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,4 +16,13 @@ public class UniqueTest {
         assertEquals(true, u.isUnique(new int[]{74}));
     }
 
-}*/
+    @Test
+    public void isUnique2(){
+        Unique u = new Unique();
+
+        assertEquals(true, u.isUnique2(new int[]{3,8,12,2,9,17,43,-8,46,203,14,97,10,4}));
+        assertEquals(false, u.isUnique2(new int[]{4,7,2,3,9,12,-47,-19,308,3,74}));
+        assertEquals(true, u.isUnique2(new int[]{}));
+        assertEquals(true, u.isUnique2(new int[]{74}));
+    }
+}

@@ -1,4 +1,4 @@
-package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.longestsortedsequence;/*package longestsortedsequence;
+package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.longestsortedsequence;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +14,4 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(5, s.longestSortedSequence(new int[]{17, 42, 3, 5, 5, 5, 8, 2, 4, 6, 1, 19}));
         assertEquals(0, s.longestSortedSequence(new int[]{}));
     }
-
-
-}*/
+}

@@ -1,4 +1,4 @@
-package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.priceisright;/*package priceisright;
+package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.priceisright;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,4 +16,4 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(-1, a.priceIsRight(new int[]{500,300,241,99,501}, 50));
     }
 
-}*/
+}

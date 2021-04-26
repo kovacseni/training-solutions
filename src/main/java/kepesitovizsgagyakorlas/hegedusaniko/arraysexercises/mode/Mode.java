@@ -12,10 +12,9 @@ public class Mode {
                 throw new IllegalArgumentException("Invalid number");
             }
             if (!numberMap.containsKey(i)) {
-                numberMap.put(i, 1);
-            } else {
-                numberMap.put(i, numberMap.get(i) + 1);
+                numberMap.put(i, 0);
             }
+            numberMap.put(i, numberMap.get(i) + 1);
         }
         return getMax(numberMap);
     }
