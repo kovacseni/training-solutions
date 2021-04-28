@@ -1,4 +1,4 @@
-package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.contains;/*package contains;
+/*package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.contains;
 
 import org.junit.jupiter.api.Test;
 

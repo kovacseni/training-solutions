@@ -1,4 +1,4 @@
-package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.append;/*package append;
+package kepesitovizsgagyakorlas.hegedusaniko.arraysexercises.append;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,4 +20,4 @@ class AppTest {
         assertEquals(true, Arrays.equals(result1,a.append(a1, a2)));
         assertEquals(true, Arrays.equals(result2,a.append(a2, a1)));
     }
-}*/
+}

@@ -104,7 +104,7 @@ Pl {3, 8, 10, 1, 9, 14, -3, 0, 14, 207, 56, 98, 12} esetén ez 4, mert keresett 
 Exercise 7.14: contains
 
 Írj egy contains(int[] a1, int[] a2) nevű statikus metódust, mely két egész számokból álló tömböt vár. A metódus azt adja
-vissza, hogy a paraméretként átadott első tömb tartalmazza-e a másodikat teljes egészében (ugyanazok a számok ugyanolyan
+vissza, hogy a paraméterként átadott első tömb tartalmazza-e a másodikat teljes egészében (ugyanazok a számok ugyanolyan
 sorrendben).
 Pl:a1:{1,6,2,1,4,1,2,1,8}
 a2:{1,2,1}
