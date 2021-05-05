@@ -11,75 +11,62 @@ public class WordsLength {
         if (text == null) {
             throw new IllegalArgumentException("The parameter is a must!");
         }
-        if (text.length == 1 && "".equals(text[0])) {
-            return new HashMap<>();
-        }
-        if (text.length == 1 && !"".equals(text[0])) {
-            text = text[0].split(" ");
-        }
-        List<Integer> normalisedLengthOfWords = getNormalisedLengthOfWords(text);
-        return getResult(normalisedLengthOfWords);
-    }
-
-    private List<Integer> getNormalisedLengthOfWords(String[] text) {
-        List<Integer> normalisedLengthOfWords = new ArrayList<>();
-        for (String s : text) {
-            if (s != null && !s.isBlank()) {
-                String[] parts = s.split(" ");
-                for (String st : parts) {
-                    char[] chars = st.toCharArray();
-                    int index1 = getIndexOfFirstLetter(chars);
-                    int index2 = getIndexOfLastLetter(chars);
-                    int number = index2 - index1;
-                    normalisedLengthOfWords.add(number);
-                }
-            }
-        }
-        return normalisedLengthOfWords;
-    }
-
-    private int getIndexOfFirstLetter(char[] chars) {
-        for (int i = 0; i < chars.length; i++) {
-            if (Character.isLetter(chars[i])) {
-                return i;
-            }
-        }
-        throw new IllegalArgumentException("I said that you should give me a normal char array!");
-    }
-
-    private int getIndexOfLastLetter(char[] chars) {
-        for (int i = chars.length - 1; i >= 0; i--) {
-            if (Character.isLetter(chars[i])) {
-                return i;
-            }
-        }
-        throw new IllegalArgumentException("I said that you should give me a normal char array!");
-    }
-
-    /* Character.isLetter(chars[chars.length - 1]) ? chars.length : chars.length - 1;
-
-    private int getCountOfLetters(char[] chars) {
-
-        if ()
-        return Character.isLetter(chars[chars.length - 1]) ? chars.length : chars.length - 1;
-        /*int count = 0;
-        for (char c : chars) {
-            if (Character.isLetter(c)) {
-                count++;
-            }
-        }
-        return count;
-    }*/
-
-    private Map<Integer, Integer> getResult(List<Integer> normalisedLengthOfWords) {
         Map<Integer, Integer> statistic = new HashMap<>();
-        for (int i : normalisedLengthOfWords) {
-            if (!statistic.containsKey(i)) {
-                statistic.put(i, 0);
+        List<String> words = getAllWordsInAList(text);
+        for (String s : words) {
+            int wordLength = s.length();
+            if (!statistic.containsKey(wordLength)) {
+                statistic.put(wordLength, 0);
             }
-            statistic.put(i, statistic.get(i) + 1);
+            statistic.put(wordLength, statistic.get(wordLength) + 1);
         }
-        System.out.println(statistic);
         return statistic;
+    }
+
+    private List<String> getAllWordsInAList(String[] textArray) {
+        List<String> words = new ArrayList<>();
+        for (String s : textArray) {
+            addWords(s, words);
+        }
+        return words;
+    }
+
+    private void addWords(String s, List<String> words) {
+        if (s != null) {
+            s = s.trim();
+            String[] parts = s.split(" ");
+            for (String str : parts) {
+                int firstIndex = getFirstIndex(str);
+                addNormalWords(words, str, firstIndex);
+            }
+        }
+    }
+
+    private int getFirstIndex(String str) {
+        str = str.trim();
+        char[] charsOfString = str.toCharArray();
+        for (int i = 0; i < charsOfString.length; i++) {
+            if (Character.isLetter(charsOfString[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void addNormalWords(List<String> words, String str, int firstIndex) {
+        if (firstIndex >= 0) {
+            int lastIndex = getLastIndex(str);
+            words.add(str.substring(firstIndex, lastIndex + 1));
+        }
+    }
+
+    private int getLastIndex(String str) {
+        char[] charsOfString = str.toCharArray();
+        for (int i = charsOfString.length - 1; i >= 0; i--) {
+            if (Character.isLetter(charsOfString[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
